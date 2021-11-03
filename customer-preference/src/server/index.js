@@ -35,32 +35,14 @@ let defaultContent ={
     cancelButtonLabel: "Cancel"
   }
 app.get('/', (_req,res) =>{
-    getProfile()
-    .then(response=>{
-        defaultContent['response'] = response;
-        console.log("this ===>",defaultContent);
-        const index = readFileSync('./public/index.html',`utf-8`);
-        const rendered = renderToString(<App  {...defaultContent} />);
-        res.send(index.replace("{{rendered}}", rendered));
-    })
+    defaultContent['response'] = response;
+    console.log("this ===>",defaultContent);
+    const index = readFileSync('./public/index.html',`utf-8`);
+    const rendered = renderToString(<App  {...defaultContent} />);
+    res.send(index.replace("{{rendered}}", rendered));
    
 });
 
-
-function getProfile() {
-   return axios.get("https://devapim.medline.com/ecom/user/v1.0/getProfile?show=notifications,details", {
-        headers: {
-            'Authorization': `Bearer 0001QzuFA1CANhvKKgLHje0Y7ZFmmEPxG1iFocOWfU`
-        }})
-        .then((response) => {
-            console.log('response',response.data);
-            return response.data;
-            })
-            .catch((error) => {
-            console.log('error',error.response);
-
-        })
-}
 
 app.listen(3002, () => {
     console.log(`Server is listening on port: 3002`);

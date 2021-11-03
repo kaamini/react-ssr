@@ -57,10 +57,7 @@ module.exports = {
             customerPreference:  "customerPreference@http://localhost:3002/remoteEntry.js",
           },
           shared: ["react", "react-dom","react-router-dom"]
-        }),
-        new HtmlWebpackPlugin({
-          template: "./public/index.html",
-        }),
+        })
       ],
 }
 
