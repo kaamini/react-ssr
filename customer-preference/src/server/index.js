@@ -2,8 +2,9 @@ import React from 'react';
 import express, { response } from 'express';
 import { readFileSync } from 'fs';
 import { renderToString } from 'react-dom/server';
-import { App } from '../components/App'
-import axios from 'axios';
+import  App from '../components/App';
+import  PreferencesComponent from '../components/PreferencesComponent';
+import  Button from '../components/Button';
 
 const app = express();
 
@@ -14,33 +15,60 @@ app.get("/defaultContent", async(_req, res) =>{
 });
 
 app.get("/preference", async(_req, res) =>{
-    if(defaultContent['response']){
-        res.json(defaultContent);
-    }
-    else{
-        getProfile()
-        .then(response=>{
-            defaultContent['response'] = response;
-            console.log("this ===>",defaultContent);
-            res.json(defaultContent);
-        })
-    }
+    res.json(defaultContent);
 });
-let defaultContent ={
-    sectionLabel: "User Preferences:",
-    notificationColHeader: "Notification",
-    emailColHeader: "Email",
-    preferenceLabel: "Enabled: ",
-    saveButtonLabel: "Save",
-    cancelButtonLabel: "Cancel"
-  }
+let defaultContent = {
+    "sectionLabel":"User Preferences:",
+    "notificationColHeader":"Notification",
+    "emailColHeader":"Email",
+    "preferenceLabel":"Enabled: ",
+    "saveButtonLabel":"Save",
+    "cancelButtonLabel":"Cancel",
+    "response": {
+        "details":
+        {
+            "firstName":"TestHomeHealth",
+            "emailAddress":"preferencesEmailCheck3@medline.com"
+        },
+            "notifications":{
+                "orderRejectedPref":false,
+                "orderApprovedPref":true,
+                "orderPendingApprovalPref":false
+            },"username":"TEST_HH_User01"}
+        };
+    let notificationOption = {
+        "response": {
+            "details":
+            {
+                "firstName":"TestHomeHealth",
+                "emailAddress":"preferencesEmailCheck3@medline.com"
+            },
+            "notifications":{
+                "option1":false,
+                "option2":true,
+                "option3":false
+            },
+        "username":"TEST_HH_User01"
+        }
+    };
 app.get('/', (_req,res) =>{
-    defaultContent['response'] = response;
     console.log("this ===>",defaultContent);
     const index = readFileSync('./public/index.html',`utf-8`);
     const rendered = renderToString(<App  {...defaultContent} />);
     res.send(index.replace("{{rendered}}", rendered));
-   
+});
+
+app.get('/preferences', (_req,res) =>{
+    console.log("this ===>",notificationOption);
+    const rendered = renderToString(<PreferencesComponent  {...notificationOption} />);
+    res.send(rendered);
+
+});
+
+app.get('/buttons', (_req,res) =>{
+    const rendered = renderToString(<Button  {...defaultContent} />);
+    res.send(rendered);
+
 });
 
 

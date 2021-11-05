@@ -1,12 +1,16 @@
 import React from 'react';
+import HeaderComponent from './HeaderComponent';
+import PreferencesComponent  from './PreferencesComponent';
+import Button  from './Button';
 
-import { Button } from './Button';
-
-export const App = (props) => (
+const App = (props) => (
     <div className="ecom-customer-preference-feature">
         <h1 className="page-title">
             {props.notificationColHeader}
         </h1>
-        <Button />
+        <HeaderComponent {...props}/>
+        <PreferencesComponent {...props}/>
+        <Button {...props}/>
     </div>
 )
+export default App;

@@ -53,6 +53,8 @@ module.exports = {
           library: { type: "window", name: "customerPreference" },
           filename: "remoteEntry.js",
           exposes: {
+            "./HeaderComponent": "./src/components/HeaderComponent",
+            "./PreferencesComponent": "./src/components/PreferencesComponent",
             "./Button": "./src/components/Button",
           },
           shared: ["react", "react-dom","react-router-dom"]

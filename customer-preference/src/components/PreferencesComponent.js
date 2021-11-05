@@ -1,21 +1,21 @@
 import React from 'react';
 
-export const PreferencesComponent = (props) => (
+const PreferencesComponent = (props) => (
     <div>
         <section className="card" >
         <div className="card-body">
         <h5 className="card-title">User Preferences</h5>
         <div className="ecom-customer-preference-feature">
-            <table className="preferences">
+            <table className="table preferences">
                 <thead className="preference-headers">
                 <tr className="preference-header">
-                    <th scope="col" className="preference-notification">
+                    <th scope="col" className="preference-notification col-6">
                         <span className="preference-notification-label">{props.notificationColHeader}</span>
                     </th>
-                    <th scope="col" className="preference-email">
+                    <th scope="col" className="preference-email text-center col-2">
                         <span  className="preference-email-label">{props.emailColHeader}</span>
                     </th>
-                    <th scope="col" className="preference-gutter"></th>
+                    <th scope="col" className="preference-gutter col-auto"></th>
                 </tr>
             </thead>
                 {
@@ -24,10 +24,10 @@ export const PreferencesComponent = (props) => (
                         return (
                             <tr>
                                 <td className="preference-notification">
-                                        <label className="preference-label" >{keyName}</label>
+                                    <label className="preference-label" >{keyName}</label>
                                 </td>
-                                <td className="preference-email">
-                                    <label className="label-container">
+                                <td className="preference-email text-center">
+                                    <label className="label-container d-block position-relative">
                                         <span>
                                         <input type="checkbox" value={keyName} checked={props.response.notifications[keyName]}/>
                                             <span className="custom-checkbox"></span>
@@ -47,3 +47,5 @@ export const PreferencesComponent = (props) => (
     </div>
 
 )
+
+export default PreferencesComponent;

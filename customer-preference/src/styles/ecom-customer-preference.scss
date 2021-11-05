@@ -1,117 +1,47 @@
-.table{
-    color: red;
-}
 
 .ecom-customer-preference-feature {
     .preferences {
-        @extend .table;
         margin-bottom: auto;
     }
 
-    .preference-title {
-        @extend .d-none;
-    }
-
-    .preference-email {
-        @extend .text-center;
-    }
-
-    .preference-headers, .preference-header, .preference-header th, .preference-header td {
+   .preference-headers, .preference-header, .preference-header th, .preference-header td {
         border-top-width: 0px;
     }
 
-    .preference-headers {
-        .preference-notification {
-            @extend .col-6;
-        }
-
-        .preference-email {
-            @extend .col-2;
-        }
-
-        .preference-gutter {
-            @extend .col-auto;
-        }
-    }
-
     .preference-items {
-        .preference-label {
-            @extend .form-check-label;
-        }
-
         .preference-input {
-            @extend .form-check-input;
             position: initial;
             margin-left: auto;
         }
     }
 
-    .preference-actions {
-        @extend .row;
-        @extend .justify-content-end;
-        @extend .m-0;
-        @extend .mt-3;
-
-        .action-cancel,
-        .action-submit {
-            @extend .btn;
-            @extend .ml-md-2;
-
-            @extend .col-12;
-            @extend .col-md-auto;
-        }
-
-        .action-submit {
-            @extend .btn-primary;
-        }
-
-        .action-cancel {
-            @extend .mt-2;
-            @extend .mt-md-auto;
-            @extend .btn-outline-primary;
-        }
-    }
 }
-
-
 
 //overwriting styles for checkboxes
 .label-container {
-    @extend .d-block;
-    @extend .position-relative;
     cursor: pointer;
     user-select: none;
   }
   .label-container:hover input ~ .custom-checkbox {
     background-color: $white;
 }
-   .label-container input:checked ~ .custom-checkbox:after {
-    @extend .d-block;
-  }
-   .label-container input.checkbox-button {
-    @extend .d-none;
-  }
+     
   .label-container input:checked ~ .custom-checkbox {
     background-color: $blue;
   }
    .custom-checkbox:after {
     content: "";
-    @extend .position-relative;
-    @extend .d-none;
   }
   .custom-checkbox {
-    @extend .d-inline-block;
     height: 15px;
     width: 15px;
     background-color: $white;
-    border: 1px solid $gray-500;
   }
   .label-container .custom-checkbox:after {
     left: 3px;
     top: -1px;
     width: 7px;
     height: 13px;
-    border: solid $white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
   }

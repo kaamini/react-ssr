@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const HeaderComponent = (props) => (
+const HeaderComponent = (props) => (
     <div className="ecom-customer-preference-view-feature" >
         <section className="card">
             <div className="card-body">
@@ -10,10 +10,9 @@ export const HeaderComponent = (props) => (
                        Edit
                     </a>
                     <div className="card-primary-content-body">
-                        <div className="card-subtitle">{props.emailColHeader}</div>
                         <div className="contact-info-message">
                             <label className="contact-email">
-                                <span className="contact-email-label">{props.emailColHeader}</span>
+                                <span className="contact-email-label">{props.emailColHeader} : </span>
                                 <span className="contact-email-input">{props.response.details.emailAddress}</span>
                             </label>
                         </div>
@@ -24,3 +23,6 @@ export const HeaderComponent = (props) => (
     </div>
 
 )
+
+
+export default HeaderComponent;

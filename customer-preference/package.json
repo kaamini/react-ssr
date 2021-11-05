@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently \"npm run build\" \"npm run startHost\" ",
+    "buildHost": "webpack --config=webpack.config.js -w",
+    "startHost": "nodemon dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && babel-node src/server",
     "startRemote": "babel-node src/server",
     "build": "npm run build:server && npm run build:client",
     "build:server": "webpack --config=build/webpack-server.config.js",
@@ -30,8 +32,10 @@
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/node": "^7.15.8",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
+    "@popperjs/core": "^2.10.2",
     "babel-loader": "^8.2.3",
     "concurrently": "^6.3.0",
     "css-loader": "^6.4.0",

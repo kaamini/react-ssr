@@ -1,9 +1,8 @@
 var path = require("path");
-const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
+const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
 
 var serverConfig = {
-  entry: path.resolve(__dirname, "../src/server/index.js"),
+  entry: ["@babel/polyfill", path.resolve(__dirname, "../src/server/index.js")],
   target: "node",
   output: {
     filename: "server.js",
@@ -38,7 +37,8 @@ var serverConfig = {
       filename: "remoteServerEntry.js",
 
       exposes: {
-        "./App": "./src/components/App",
+        "./HeaderComponent": "./src/components/HeaderComponent",
+        "./PreferencesComponent": "./src/components/PreferencesComponent",
         "./Button": "./src/components/Button",
       },
       //shared: ["react", "react-dom"],
