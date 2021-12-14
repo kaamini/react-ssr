@@ -28,38 +28,36 @@ let defaultContent = {
         "details":
         {
             "firstName":"TestHomeHealth",
-            "emailAddress":"preferencesEmailCheck3@medline.com"
+            "emailAddress":"test@medline.com"
         },
             "notifications":{
-                "orderRejectedPref":false,
-                "orderApprovedPref":true,
-                "orderPendingApprovalPref":false
+                "Order Rejected":false,
+                "order  Approved":true,
+                "order Pending":false
             },"username":"TEST_HH_User01"}
         };
-    let notificationOption = {
-        "response": {
-            "details":
-            {
-                "firstName":"TestHomeHealth",
-                "emailAddress":"preferencesEmailCheck3@medline.com"
-            },
-            "notifications":{
-                "option1":false,
-                "option2":true,
-                "option3":false
-            },
-        "username":"TEST_HH_User01"
-        }
-    };
+let notificationOption = {
+    "response": {
+        "details":
+        {
+            "firstName":"TestHomeHealth",
+            "emailAddress":"test@medline.com"
+        },
+        "notifications":{
+            "option1":false,
+            "option2":true,
+            "option3":false
+        },
+    "username":"TEST_HH_User01"
+    }
+};
 app.get('/', (_req,res) =>{
-    console.log("this ===>",defaultContent);
     const index = readFileSync('./public/index.html',`utf-8`);
     const rendered = renderToString(<App  {...defaultContent} />);
     res.send(index.replace("{{rendered}}", rendered));
 });
 
 app.get('/preferences', (_req,res) =>{
-    console.log("this ===>",notificationOption);
     const rendered = renderToString(<PreferencesComponent  {...notificationOption} />);
     res.send(rendered);
 
@@ -70,7 +68,6 @@ app.get('/buttons', (_req,res) =>{
     res.send(rendered);
 
 });
-
 
 app.listen(3002, () => {
     console.log(`Server is listening on port: 3002`);

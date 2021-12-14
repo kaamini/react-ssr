@@ -8,7 +8,6 @@ fetch("http://localhost:3002/preference")
 .then(data => data.json())
 .then(json => {
     state = json;
-    console.log("got the edtate", state);
     render();
 })
 
