@@ -6,8 +6,7 @@ const HeaderComponent = (props) => (
             <div className="card-primary-content row pb-1 justify-content-between" >
                 <h5 className="card-title col-auto">Contact</h5>
                 <a className="edit-profile-link col-auto d-none d-md-block" href="/account/user-profile.jsp">
-                    Edit
-                </a>
+                Edit in My Profile </a>
                 <div className="card-primary-content-body col-12">
                 <div className="card-subtitle mb-2"> All notifications will be sent to this email address</div>
                     <div className="contact-info-message">

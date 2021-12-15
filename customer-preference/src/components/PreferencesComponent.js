@@ -7,7 +7,7 @@ const PreferencesComponent = (props) => (
         <div className="card-subtitle"> Get email updates about your order status. </div>
         <div className="ecom-customer-preference-feature container">
             <table className="table preferences">
-                <caption class="preference-title d-none"> User Preferences: </caption>
+                <caption className="preference-title d-none"> User Preferences: </caption>
                 <thead className="preference-headers">
                 <tr className="preference-header">
                     <th scope="col" className="preference-notification col-6">
@@ -21,16 +21,16 @@ const PreferencesComponent = (props) => (
             </thead>
                 {
                 <tbody className="preference-items">
-                    {Object.keys(props.response.notifications).map(function(keyName, keyIndex) {
+                    {Object.keys(props.response.notifications).map(function(keyName, index) {
                         return (
-                            <tr>
+                            <tr id={"ecom-customer-preference-item-"+index}>
                                 <td className="preference-notification">
-                                    <label className="preference-label form-check-label" >{keyName}</label>
+                                    <label className="preference-label form-check-label" >{props.response.notifications[keyName].label}</label>
                                 </td>
                                 <td className="preference-email text-center">
                                     <label className="label-container d-block position-relative">
                                         <span>
-                                        <input className="preference-input form-check-input checkbox-button" type="checkbox" value={keyName} checked={props.response.notifications[keyName]}/>
+                                        <input className="preference-input form-check-input checkbox-button" type="checkbox" value={props.response.notifications[keyName].label} checked={props.response.notifications[keyName].checked}/>
                                             <span className="custom-checkbox"></span>
                                         </span>
                                     </label>

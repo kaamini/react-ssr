@@ -30,11 +30,12 @@ let defaultContent = {
             "firstName":"TestHomeHealth",
             "emailAddress":"test@medline.com"
         },
-            "notifications":{
-                "Order Rejected":false,
-                "order  Approved":true,
-                "order Pending":false
-            },"username":"TEST_HH_User01"}
+            "notifications":[
+                { id: 'orderRejectedPref', label: 'Order Rejected', checked: true },
+                { id: 'orderApprovedPref', label: 'Order Approved', checked: true },
+               { id: 'orderPendingApprovalPref', label: 'Order Pending Approval', checked: false  }
+             ],
+            "username":"TEST_HH_User01"}
         };
 let notificationOption = {
     "response": {
